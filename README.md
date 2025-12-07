@@ -1,162 +1,167 @@
-'use client'
+<div align="center">
 
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { 
-  HiHome, 
-  HiUser, 
-  HiFolder, 
-  HiEnvelope, 
-  HiBriefcase
-} from 'react-icons/hi2'
-import { 
-  FiGithub, 
-  FiLinkedin, 
-  FiTwitter, 
-  FiInstagram 
-} from 'react-icons/fi'
-import type { IconType } from 'react-icons'
-import './Navbar.css'
+# 👋 Hi, I'm Shreyash Pandey!
 
-export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+### 🚀 Full Stack Developer | AI/ML Enthusiast | Networking Expert
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+[![Age](https://img.shields.io/badge/Age-17-blue?style=for-the-badge&logo=calendar&logoColor=white)](https://github.com/shreyashnpc)
+[![Education](https://img.shields.io/badge/B.Tech-AI%2FML-red?style=for-the-badge&logo=graduation-cap&logoColor=white)](https://github.com/shreyashnpc)
+[![Location](https://img.shields.io/badge/Location-Mumbai%2C%20India-green?style=for-the-badge&logo=location&logoColor=white)](https://github.com/shreyashnpc)
 
-  const navLinks: Array<{ href: string; icon: IconType; label: string }> = [
-    { href: '/', icon: HiHome, label: 'Home' },
-    { href: '/about', icon: HiUser, label: 'About' },
-    { href: '/projects', icon: HiFolder, label: 'Projects' },
-    { href: '/contact', icon: HiEnvelope, label: 'Contact' },
-    { href: '/experience', icon: HiBriefcase, label: 'Experience' },
-  ]
+</div>
 
-  const socialLinks: Array<{ href: string; icon: IconType; label: string }> = [
-    { href: 'https://github.com/shreyashnpc', icon: FiGithub, label: 'GitHub' },
-    { href: 'https://linkedin.com', icon: FiLinkedin, label: 'LinkedIn' },
-    { href: 'https://twitter.com', icon: FiTwitter, label: 'Twitter' },
-    { href: 'https://instagram.com', icon: FiInstagram, label: 'Instagram' },
-  ]
+---
 
-  return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-container">
-        {/* Mac Traffic Light Buttons */}
-        <div className="traffic-lights">
-          <div className="traffic-light traffic-light-red"></div>
-          <div className="traffic-light traffic-light-yellow"></div>
-          <div className="traffic-light traffic-light-green"></div>
-        </div>
+<div align="center">
 
-        {/* Left Side - Navigation Links */}
-        <ul className="navbar-menu-left">
-          {navLinks.map((link, index) => {
-            const IconComponent = link.icon
-            return (
-              <li key={link.href} style={{ animationDelay: `${index * 0.1}s` }}>
-                <Link
-                  href={link.href}
-                  className="navbar-link"
-                  title={link.label}
-                >
-                  <IconComponent className="link-icon" />
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
+### 💼 Current Leadership Roles
 
-        {/* Center - Name */}
-        <div className="navbar-center">
-          <Link href="/" className="navbar-logo">
-            <div className="logo-container">
-              <div className="logo-text">
-                <span className="name-first">SHREYASH</span>
-                <span className="name-last">PANDEY</span>
-              </div>
-              <div className="logo-rings">
-                <span className="ring ring-1"></span>
-                <span className="ring ring-2"></span>
-                <span className="ring ring-3"></span>
-              </div>
-            </div>
-          </Link>
-        </div>
+[![CTO](https://img.shields.io/badge/CTO-MCShield.org-orange?style=for-the-badge&logo=shield-check&logoColor=white)](https://mcshield.org)
+[![CMO](https://img.shields.io/badge/CMO-Slice.wtf-purple?style=for-the-badge&logo=chart-line&logoColor=white)](https://slice.wtf)
 
-        {/* Right Side - Social Media Icons */}
-        <div className="navbar-social">
-          {socialLinks.map((social, index) => {
-            const IconComponent = social.icon
-            return (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-icon"
-                aria-label={social.label}
-                title={social.label}
-                style={{ animationDelay: `${(navLinks.length + index) * 0.1}s` }}
-              >
-                <IconComponent className="social-icon-svg" />
-              </a>
-            )
-          })}
-        </div>
+</div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="mobile-menu-toggle"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+---
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-        <ul className="mobile-menu-list">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="mobile-link"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className="mobile-social">
-          {socialLinks.map((social) => {
-            const IconComponent = social.icon
-            return (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mobile-social-icon"
-                aria-label={social.label}
-              >
-                <IconComponent className="mobile-social-svg" />
-              </a>
-            )
-          })}
-        </div>
-      </div>
-    </nav>
-  )
-}
+### 🎯 About Me
 
+I'm a **17-year-old** passionate and results-driven Full Stack Developer with a comprehensive skill set spanning frontend, backend, and API route development. I thrive on building robust, efficient, and scalable enterprise-grade solutions. 
+
+Currently:
+- 🎓 Pursuing **B.Tech in AI/ML** from Mumbai University
+- 🛡️ Serving as **CTO @ [MCShield.org](https://mcshield.org)** - Leading a cybersecurity company creating high-performance proxies using **XDP (eXpress Data Path)** and advanced packet filtration technologies
+- 📈 Serving as **CMO @ [Slice.wtf](https://slice.wtf)** - Driving marketing strategy and growth initiatives
+
+I'm constantly integrating cutting-edge technologies to create innovative digital experiences, proving that age is just a number when it comes to innovation and impact! 🚀
+
+---
+
+### 💡 What I Do
+
+<div align="center">
+
+| 🏢 Enterprise Solutions | 🌐 Full Stack Development | 🔒 Cybersecurity & Networking |
+|:---:|:---:|:---:|
+| High-performance dashboards | Frontend + Backend + APIs | XDP Proxies & Filtration |
+| AI-powered insights | React, Next.js, TypeScript | DPDK, HA Proxies, Firewalls |
+| Cost-efficient architecture | Node.js, Python, PostgreSQL | Linux Infrastructure |
+
+</div>
+
+#### 🔧 Technical Expertise
+
+- **Enterprise-Grade Dashboards**: Designed and implemented high-performance dashboards with advanced authentication, lightning-fast frontends, and integrated AI capabilities
+- **Full Stack Development**: Proficient in crafting end-to-end applications, from intuitive user interfaces to robust server-side logic and efficient API routes
+- **Cybersecurity & Networking**: 
+  - 🛡️ **XDP (eXpress Data Path)**: Building ultra-fast proxies and packet filtration systems
+  - ⚡ **DPDK**: Ultra-low latency packet processing
+  - 🔐 **HA Proxies**: High-availability and load-balancing solutions
+  - 🚧 **Firewalls**: Configuring and managing secure network perimeters
+- **AI/ML Integration**: Actively exploring and applying AI/ML principles to enhance application intelligence and automation
+- **Linux Mastery**: Highly skilled in navigating, managing, and troubleshooting Linux environments
+
+---
+
+### 🛠️ Tech Stack & Tools
+
+<div align="center">
+
+#### Frontend
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+
+#### Backend
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat-square&logo=mongodb&logoColor=white)
+
+#### Networking & Security
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+![XDP](https://img.shields.io/badge/XDP-FF6B6B?style=flat-square&logo=linux&logoColor=white)
+![DPDK](https://img.shields.io/badge/DPDK-4ECDC4?style=flat-square&logo=network&logoColor=white)
+
+#### AI/ML
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+
+</div>
+
+---
+
+### 📊 GitHub Stats
+
+<div align="center">
+
+[![Shreyash's GitHub Stats](https://github-readme-stats.vercel.app/api?username=shreyashnpc&show_icons=true&theme=blue-green&hide_border=true&bg_color=0D1117&title_color=3b82f6&icon_color=3b82f6)](https://github.com/shreyashnpc)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=shreyashnpc&layout=compact&theme=blue-green&hide_border=true&bg_color=0D1117&title_color=3b82f6)](https://github.com/shreyashnpc)
+
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=shreyashnpc&theme=blue-green&hide_border=true&background=0D1117&ring=3b82f6&fire=3b82f6&currStreakLabel=3b82f6)](https://github.com/shreyashnpc)
+
+</div>
+
+---
+
+### 🌟 Featured Projects
+
+<div align="center">
+
+#### 🏢 Enterprise Dashboard & AI Integration
+A cutting-edge enterprise dashboard designed for speed, efficiency, and minimal operational cost.
+
+| Feature | Technology |
+|:---:|:---:|
+| 🔐 Robust Authentication | Next.js + Custom Auth |
+| ⚡ High-Performance Frontend | React + TypeScript |
+| 🤖 AI-Powered Insights | TensorFlow + PyTorch |
+| 📊 Scalable Backend | Node.js + PostgreSQL |
+
+</div>
+
+#### 🛡️ MCShield.org - Cybersecurity Solutions
+Leading development of high-performance proxy solutions using XDP and advanced packet filtration.
+
+#### 📈 Slice.wtf - Marketing & Growth
+Driving marketing strategy and growth initiatives for innovative digital solutions.
+
+---
+
+### 🎓 Education
+
+<div align="center">
+
+**🎓 B.Tech in Artificial Intelligence & Machine Learning**  
+📍 Mumbai University | *Ongoing*
+
+</div>
+
+---
+
+### 🌐 Let's Connect!
+
+<div align="center">
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-3b82f6?style=for-the-badge&logo=globe&logoColor=white)](your-portfolio-url.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/shreyashpandey)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shreyashnpc)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
+
+</div>
+
+---
+
+<div align="center">
+
+### ⚡ Fun Fact
+
+*At just 17, I'm balancing academic pursuits with leadership roles in tech companies, demonstrating that age is just a number when it comes to innovation and impact!* 🚀
+
+**Feel free to explore my repositories and connect with me!** 👋
+
+[![Visitors](https://visitor-badge.laobi.icu/badge?page_id=shreyashnpc.shreyashnpc&left_color=blue&right_color=green)](https://github.com/shreyashnpc)
+
+</div>
