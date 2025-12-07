@@ -1,76 +1,162 @@
-# 👋 Hi, I'm Shreyash Pandey!
+'use client'
 
----
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { 
+  HiHome, 
+  HiUser, 
+  HiFolder, 
+  HiEnvelope, 
+  HiBriefcase
+} from 'react-icons/hi2'
+import { 
+  FiGithub, 
+  FiLinkedin, 
+  FiTwitter, 
+  FiInstagram 
+} from 'react-icons/fi'
+import type { IconType } from 'react-icons'
+import './Navbar.css'
 
-### 🚀 Full Stack Developer | AI/ML Enthusiast | Networking Expert | CTO @ MCShield | CMO @ Slice
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-I'm a 17-year-old passionate and results-driven Full Stack Developer with a comprehensive skill set spanning frontend, backend, and API route development. I thrive on building robust, efficient, and scalable enterprise-grade solutions. Currently serving as **CTO of MCShield.org** (a cybersecurity company creating proxies in XDP and filtration) and **CMO of [Slice.wtf](https://slice.wtf)**, while pursuing my B.Tech in AI/ML from Mumbai University. I'm constantly integrating cutting-edge technologies to create innovative digital experiences.
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
----
+  const navLinks: Array<{ href: string; icon: IconType; label: string }> = [
+    { href: '/', icon: HiHome, label: 'Home' },
+    { href: '/about', icon: HiUser, label: 'About' },
+    { href: '/projects', icon: HiFolder, label: 'Projects' },
+    { href: '/contact', icon: HiEnvelope, label: 'Contact' },
+    { href: '/experience', icon: HiBriefcase, label: 'Experience' },
+  ]
 
-### 💡 What I Do
+  const socialLinks: Array<{ href: string; icon: IconType; label: string }> = [
+    { href: 'https://github.com/shreyashnpc', icon: FiGithub, label: 'GitHub' },
+    { href: 'https://linkedin.com', icon: FiLinkedin, label: 'LinkedIn' },
+    { href: 'https://twitter.com', icon: FiTwitter, label: 'Twitter' },
+    { href: 'https://instagram.com', icon: FiInstagram, label: 'Instagram' },
+  ]
 
-- **Enterprise-Grade Dashboards**: Designed and implemented a high-performance dashboard with advanced authentication, a lightning-fast frontend, and integrated AI capabilities. My focus is on delivering solutions that are not only powerful but also incredibly cost-efficient.
-- **Full Stack Development**: Proficient in crafting end-to-end applications, from intuitive user interfaces to robust server-side logic and efficient API routes.
-- **Networking Expertise**: Deep understanding of advanced networking concepts including:
-  - **HA Proxies**: Implementing high-availability and load-balancing solutions.
-  - **DPDK (Data Plane Development Kit)**: Leveraging for ultra-low latency packet processing.
-  - **XDP (eXpress Data Path)**: Optimizing network performance directly in the Linux kernel.
-  - **Firewalls**: Configuring and managing secure network perimeters.
-- **AI/ML Integration**: Actively exploring and applying Artificial Intelligence and Machine Learning principles to enhance application intelligence and automation.
-- **Linux Command Line Mastery**: Highly skilled in navigating, managing, and troubleshooting Linux environments.
+  return (
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        {/* Mac Traffic Light Buttons */}
+        <div className="traffic-lights">
+          <div className="traffic-light traffic-light-red"></div>
+          <div className="traffic-light traffic-light-yellow"></div>
+          <div className="traffic-light traffic-light-green"></div>
+        </div>
 
----
+        {/* Left Side - Navigation Links */}
+        <ul className="navbar-menu-left">
+          {navLinks.map((link, index) => {
+            const IconComponent = link.icon
+            return (
+              <li key={link.href} style={{ animationDelay: `${index * 0.1}s` }}>
+                <Link
+                  href={link.href}
+                  className="navbar-link"
+                  title={link.label}
+                >
+                  <IconComponent className="link-icon" />
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
 
-### 🛠️ Tech Stack & Tools
+        {/* Center - Name */}
+        <div className="navbar-center">
+          <Link href="/" className="navbar-logo">
+            <div className="logo-container">
+              <div className="logo-text">
+                <span className="name-first">SHREYASH</span>
+                <span className="name-last">PANDEY</span>
+              </div>
+              <div className="logo-rings">
+                <span className="ring ring-1"></span>
+                <span className="ring ring-2"></span>
+                <span className="ring ring-3"></span>
+              </div>
+            </div>
+          </Link>
+        </div>
 
-**Frontend**: React, Next.js, TypeScript, Tailwind CSS, Framer Motion
-**Backend**: Node.js, Express, Python, Django, PostgreSQL, MongoDB
-**Networking**: HAProxy, DPDK, XDP, Firewalls, Linux
-**AI/ML**: Python, TensorFlow, PyTorch, Scikit-learn
-**Tools**: Git, Docker, VS Code, npm/yarn
+        {/* Right Side - Social Media Icons */}
+        <div className="navbar-social">
+          {socialLinks.map((social, index) => {
+            const IconComponent = social.icon
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon"
+                aria-label={social.label}
+                title={social.label}
+                style={{ animationDelay: `${(navLinks.length + index) * 0.1}s` }}
+              >
+                <IconComponent className="social-icon-svg" />
+              </a>
+            )
+          })}
+        </div>
 
----
+        {/* Mobile Menu Toggle */}
+        <button
+          className="mobile-menu-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
-### 📊 GitHub Stats
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+        <ul className="mobile-menu-list">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mobile-link"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mobile-social">
+          {socialLinks.map((social) => {
+            const IconComponent = social.icon
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-social-icon"
+                aria-label={social.label}
+              >
+                <IconComponent className="mobile-social-svg" />
+              </a>
+            )
+          })}
+        </div>
+      </div>
+    </nav>
+  )
+}
 
-[![Shreyash's GitHub Stats](https://github-readme-stats.vercel.app/api?username=shreyashnpc&show_icons=true&theme=blue-green)](https://github.com/anuraghazra/github-readme-stats)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=shreyashnpc&layout=compact&theme=blue-green)](https://github.com/anuraghazra/github-readme-stats)
-
----
-
-### 💼 Current Roles
-
-- **CTO @ [MCShield.org](https://mcshield.org)**: Leading a cybersecurity company focused on creating high-performance proxies using XDP (eXpress Data Path) and advanced packet filtration technologies. Building cutting-edge network security solutions.
-- **CMO @ [Slice.wtf](https://slice.wtf)**: Driving marketing strategy and growth initiatives for innovative digital solutions.
-
-### 🌟 Featured Project
-
-#### Enterprise Dashboard & AI Integration
-A cutting-edge enterprise dashboard designed for speed, efficiency, and minimal operational cost. Features include:
-- **Robust Authentication**: Secure user management.
-- **High-Performance Frontend**: Built with Next.js and React for a seamless user experience.
-- **AI-Powered Insights**: Integrated machine learning models for advanced data analysis and automation.
-- **Scalable Backend**: Optimized API routes and database interactions.
-
----
-
-### 🎓 Education
-
-**B.Tech in Artificial Intelligence & Machine Learning**
-Mumbai University (Ongoing)
-
-*At just 17, I'm balancing my academic pursuits with leadership roles in tech companies, demonstrating that age is just a number when it comes to innovation and impact.*
-
----
-
-### 🌐 Let's Connect!
-
-- **Portfolio**: [your-portfolio-url.com](your-portfolio-url.com)
-- **LinkedIn**: [linkedin.com/in/shreyashpandey](https://linkedin.com/in/shreyashpandey)
-- **GitHub**: [github.com/shreyashnpc](https://github.com/shreyashnpc)
-- **Email**: [your.email@example.com](mailto:your.email@example.com)
-
----
-
-Feel free to explore my repositories and connect with me!
